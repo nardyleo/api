@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\BOSimplificadoRequest as Request;
 use App\FormularioBOS;
 
 class BOSimplificadoController extends Controller
