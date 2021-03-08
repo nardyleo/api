@@ -17,3 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::prefix('v1')->group(function () {
+    Route::resources([
+        'users' => 'UsuariosController',
+        'boletimS' => 'BOSimplificadoController',
+        'produto' => 'ProdutosController',
+    ]);
+});
+
+
+Route::prefix('v2')->group(function () {
+    Route::get('/boletimS/{boletim}', 'BOSimplificadoController@show');
+});
+
+// Route::prefix('v1')->group(function () {
+//     Route::get('produto', 'ProdutosController@index');
+//     Route::get('/users', 'UsuariosController@index');
+//     Route::post('/users', 'UsuariosController@store');
+//     Route::get('/users/{usuario}', 'UsuariosController@show');
+// });
