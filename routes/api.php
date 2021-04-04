@@ -17,13 +17,37 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 Route::prefix('Api')->group(function () {
     Route::resources([
         'users' => 'UsuariosController',
         'boletimS' => 'BOSimplificadoController',
-        'boletimR' => 'BOSimplificadoController',
-        'boletimI' => 'BOSimplificadoController',
+        'boletimR' => 'BOResgatecontrollerController',
+        'boletimI' => 'BOIncendioController',
     ]);
 });
 
@@ -31,10 +55,16 @@ Route::prefix('Api')->group(function () {
 Route::prefix('v2')->group(function () {
     Route::get('/boletimS/{boletim}', 'BOSimplificadoController@show');
 });
+Route::prefix('v2')->group(function () {
+    Route::get('/boletimS/{boletim}', 'BOSimplificadoController@show');
+});
+Route::prefix('v2')->group(function () {
+    Route::get('/boletimS/{boletim}', 'BOSimplificadoController@show');
+});
 
-// Route::prefix('v1')->group(function () {
-//     Route::get('produto', 'ProdutosController@index');
-//     Route::get('/users', 'UsuariosController@index');
-//     Route::post('/users', 'UsuariosController@store');
-//     Route::get('/users/{usuario}', 'UsuariosController@show');
-// });
+
+Route::middleware(['auth:api','user'])->group(function () {
+    Route::get('/users', 'Api\UsuariosController@index');
+    Route::get('/users/{usuario}', 'Api\UsuariosController@show');
+    Route::post('/boletimS', 'Api\BOSimplificadoController@store');
+});
