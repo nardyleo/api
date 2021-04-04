@@ -18,11 +18,12 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::prefix('v1')->group(function () {
+Route::prefix('Api')->group(function () {
     Route::resources([
         'users' => 'UsuariosController',
         'boletimS' => 'BOSimplificadoController',
-        'produto' => 'ProdutosController',
+        'boletimR' => 'BOSimplificadoController',
+        'boletimI' => 'BOSimplificadoController',
     ]);
 });
 
